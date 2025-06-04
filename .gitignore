@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+DockerDesktopWSL/
+eslint.config.js
+index.html
