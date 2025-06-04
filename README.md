@@ -1,6 +1,6 @@
 # Curriculum Vitae QU [CuViQ] - Job Recommendation Platform
 
-JobMatch AI adalah platform cerdas yang membantu pencari kerja dengan menganalisis CV mereka dan memberikan rekomendasi pekerjaan yang dipersonalisasi menggunakan teknik NLP dan machine learning berbasis TF-IDF.
+CuViQ adalah platform cerdas yang membantu pencari kerja dengan menganalisis CV mereka dan memberikan rekomendasi pekerjaan yang dipersonalisasi menggunakan teknik NLP dan machine learning berbasis TF-IDF.
 
 ## 🔥 Fitur
 - **Autentikasi Pengguna**: Registrasi, login, dan pengelolaan profil dengan FastAPI
