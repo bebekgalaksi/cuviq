@@ -1,0 +1,141 @@
+#root {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-align: initial;
+}
+
+.logo {
+  height: 6em;
+  padding: 0 2em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo.react {
+  height: 4em;
+  padding: 0 1em;
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+/* ======================== ANIMASI & INTERAKSI ========================= */
+
+/* Animasi Floating untuk Gambar */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Efek Hover pada Tombol */
+.btn-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-hover-effect:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Efek Hover pada Kartu */
+.card-hover-effect {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card-hover-effect:hover {
+  transform: scale(1.03);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animasi Background Bergerak */
+@keyframes bgShift {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.animate-bg-shift {
+  background: linear-gradient(to right, #e9e5e5, #c7c7c7);
+  background-size: 200% 200%;
+  animation: bgShift 6s infinite alternate;
+}
+
+/* ======================== HERO SECTION ========================= */
+
+.hero-title {
+  font-size: 8rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 8rem;
+  background: linear-gradient(to right, #e9e5e5, #c7c7c7);
+}
+
+/* ======================== RESPONSIVE ========================= */
+
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero-section img {
+    margin-top: 2rem;
+    width: 80%;
+  }
+}

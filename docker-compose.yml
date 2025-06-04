@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: hasyidan123
+      POSTGRES_DB: ATS_CHECKER
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./backend
+    container_name: cuviq-backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:hasyidan123@db:5432/ATS_CHECKER
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cuviq-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend 
