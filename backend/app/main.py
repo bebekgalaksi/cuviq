@@ -11,7 +11,7 @@ from app.schemas import UserCreate, UserOut, UserLogin, MatchResponse, ResultsRe
 
 # Inisialisasi DB & model pencocokan
 init_db()
-matcher = Matcher("app/data/dataset.csv", "app/data/job_embeddings.npy")
+matcher = Matcher("app/data/dataset.csv", 100)
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 # Inisialisasi aplikasi FastAPI
