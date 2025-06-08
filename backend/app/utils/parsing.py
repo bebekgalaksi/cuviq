@@ -105,43 +105,29 @@ def parse_skills(text: str) -> str:
     return ", ".join(unique_skills) if unique_skills else "No skills listed"
 
 def parse_education_and_experience(text: str) -> str:
-    edu_pattern = re.compile(
-        r"""(?im)
-        ^(education|academic background|educational background|qualifications|academic qualifications)
-        \s*[:\-–]?\s*
-        (.*?)
-        (?=^
-            (experience|work history|professional background|employment history|projects|certifications|skills|summary|profile|$)
-        )
-        """,
-        re.DOTALL | re.VERBOSE
-    )
-    exp_pattern = re.compile(
-        r"""(?im)
-        ^(experience|work history|professional background|employment history)
-        \s*[:\-–]?\s*
-        (.*?)
-        (?=^
-            (education|projects|certifications|skills|summary|profile|$)
-        )
-        """,
-        re.DOTALL | re.VERBOSE
-    )
+    text_lower = text.lower()
 
-    edu_match = edu_pattern.search(text)
-    exp_match = exp_pattern.search(text)
+    # Buat fallback deteksi kasar manual (berbasis teks asli)
+    experience_section = ""
+    education_section = ""
 
-    edu_section = edu_match.group(2).strip() if edu_match else ""
-    exp_section = exp_match.group(2).strip() if exp_match else ""
+    # Coba potong berdasarkan header
+    exp_match = re.search(r"(?i)experience\s*\n+(.*?)(?=\n+(skills|education|projects|$))", text, re.DOTALL)
+    edu_match = re.search(r"(?i)education\s*\n+(.*?)(?=\n+(skills|experience|projects|$))", text, re.DOTALL)
 
-    if edu_section and exp_section:
-        return edu_section + "\n\n" + exp_section
-    elif edu_section:
-        return edu_section
-    elif exp_section:
-        return exp_section
-    else:
-        return ""
+    if exp_match:
+        experience_section = exp_match.group(1).strip()
+    if edu_match:
+        education_section = edu_match.group(1).strip()
+
+    result = []
+    if experience_section:
+        result.append("EXPERIENCE:\n" + experience_section)
+    if education_section:
+        result.append("EDUCATION:\n" + education_section)
+
+    return "\n\n".join(result)
+
 
 def parse_cv_sections(cv_text: str) -> dict:
     sections = {
